@@ -6,7 +6,7 @@
 /*   By: ousdiall <ousdiall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:05:08 by ousdiall          #+#    #+#             */
-/*   Updated: 2025/10/07 13:19:23 by ousdiall         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:19:53 by ousdiall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,117 @@ void rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
+}
+void	rra(t_stack *a)
+{
+	t_node *first;
+	t_node *last;
+	t_node *second_last;
+	if(a != NULL && a->size > 1)
+	{
+		first =a->top;
+		last = a->top;
+		second_last = NULL;
+		while(last->next != NULL)
+		{
+			second_last = last;
+			last = last->next;
+		}
+		last->next = first;
+		second_last->next = NULL;
+		a->top = last;
+	}
+	else
+		return;
+}
+void	rrb(t_stack *b)
+{
+	t_node *first;
+	t_node *last;
+	t_node *second_last;
+	if(b != NULL && b->size > 1)
+	{
+		first =b->top;
+		last = b->top;
+		second_last = NULL;
+		while(last->next != NULL)
+		{
+			second_last = last;
+			last = last->next;
+		}
+		last->next = first;
+		second_last->next = NULL;
+		b->top = last;
+	}
+	else
+		return;
+}
+void	rrr(t_stack *a, t_stack *b)
+{
+	rra(a);
+	rrb(b);
+}
+t_node *peek(t_stack *stack)
+{
+	t_node *top;
+	if(stack != NULL)
+	{
+		top = stack->top;
+		return(top);
+	}
+	else
+		return(NULL);
+}
+void free_stack(t_stack *stack)
+{
+	t_node *current;
+	t_node *next;
+	if(stack != NULL)
+	{
+		current = stack->top;
+		while(current != NULL)
+		{
+			next = current->next;
+			free(current);
+			current = next;
+		}
+		free(stack);
+	}
+	else
+		return;
+}
+void	print_stack(t_stack *stack)
+{
+	t_node *current;
+
+	if(stack != NULL && stack->top != NULL)
+	{
+		current = stack->top;
+		while(current != NULL)
+		{
+			ft_printf("%d", current->value);
+			current = current->next;
+		}
+		ft_printf("\n");
+	}
+	else
+		return;
+}
+int is_sorted(t_stack *stack)
+{
+	t_node *current;
+
+	if(stack != NULL && stack->size > 1)
+	{
+		current = stack->top;
+		while(current->next != NULL)
+		{
+			if(current->value > current->next->value)
+				return(0);
+			current = current->next;
+		}
+		return 1;
+	}
+	else
+		return 1;
 }
