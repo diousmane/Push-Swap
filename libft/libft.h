@@ -69,14 +69,13 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int	ft_printf(const char *str, ...);
-int	ft_putchar_print(char c);
-int	ft_putstr_print(char *str);
-int	ft_check(char c, va_list args);
-int	ft_putnbr_print(int n);
-int	ft_putunsigned_print(unsigned int n);
-int	ft_puthexa_print(unsigned long n);
-int	ft_puthexa_upper_print(unsigned long n);
-
+int		ft_printf(const char *str, ...);
+int		ft_putchar_print(char c);
+int		ft_putstr_print(char *str);
+int		ft_check(char c, va_list args);
+int		ft_putnbr_print(int n);
+int		ft_putunsigned_print(unsigned int n);
+int		ft_puthexa_print(unsigned long n);
+int		ft_puthexa_upper_print(unsigned long n);
 
 #endif
