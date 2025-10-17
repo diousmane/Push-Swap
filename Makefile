@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ousdiall <ousdiall@student.42.fr>          +#+  +:+       +#+         #
+#    By: ousou <ousou@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 12:45:00 by ousdiall          #+#    #+#              #
-#    Updated: 2025/10/16 13:04:50 by ousdiall         ###   ########.fr        #
+#    Updated: 2025/10/17 08:43:27 by ousou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRCDIR = .
 LIBFTDIR = libft
 
-SRCS = push_swap.c stack_basic.c operations.c push_pop.c rotations.c reverse_rotations.c utils.c radix_sort.c
+SRCS = push_swap.c operations.c push_pop.c rotations.c reverse_rotations.c \
+	stack.c stack2.c parsing.c small_sort.c radix_sort.c
 
 OBJS = $(SRCS:.c=.o)
 

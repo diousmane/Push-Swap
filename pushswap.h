@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ousdiall <ousdiall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ousou <ousou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:41:17 by ousdiall          #+#    #+#             */
-/*   Updated: 2025/10/16 13:10:56 by ousdiall         ###   ########.fr       */
+/*   Updated: 2025/10/17 08:43:27 by ousou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ void	rrr(t_stack *a, t_stack *b);
 void	swap(t_stack *stack);
 void	radix_sort(t_stack *a, t_stack *b);
 void	assign_indexes(t_stack *stack);
-void	handle_single_arg(t_stack *stack_a, char *arg);
-void	handle_multiple_args(t_stack *stack_a, int argc, char **argv);
-int		get_max_bits(t_stack *stack);
-void	print_stack(t_stack *stack);
 int		is_sorted(t_stack *stack);
+int		is_valid_number(char *str);
+int		has_duplicates(t_stack *stack);
+void	print_error(void);
+void	sort_three(t_stack *a);
+void	sort_five(t_stack *a, t_stack *b);
+int		parse_single_arg(t_stack *stack_a, char *arg);
+int		parse_multiple_args(t_stack *stack_a, int argc, char **argv);
 
 #endif

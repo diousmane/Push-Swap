@@ -3,76 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ousdiall <ousdiall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ousou <ousou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 12:38:47 by ousdiall          #+#    #+#             */
-/*   Updated: 2025/10/16 13:10:56 by ousdiall         ###   ########.fr       */
+/*   Updated: 2025/10/17 08:31:36 by ousou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	get_max_bits(t_stack *stack)
+static int	get_max_bits(t_stack *a)
 {
+	int		max_bits;
 	int		max_index;
-	int		bits;
-	t_node	*current;
+	t_node	*tmp;
 
+	tmp = a->top;
 	max_index = 0;
-	current = stack->top;
-	while (current != NULL)
+	while (tmp)
 	{
-		if (current->index > max_index)
-			max_index = current->index;
-		current = current->next;
+		if (tmp->index > max_index)
+			max_index = tmp->index;
+		tmp = tmp->next;
 	}
-	bits = 0;
+	max_bits = 0;
 	while (max_index > 0)
 	{
 		max_index >>= 1;
-		bits++;
+		max_bits++;
 	}
-	return (bits);
-}
-
-void	process_bit(t_stack *a, t_stack *b, int bit)
-{
-	int	size;
-	int	i;
-
-	size = a->size;
-	i = 0;
-	while (i < size)
-	{
-		if (((a->top->index >> bit) & 1) == 0)
-		{
-			ra(a);
-			ft_printf("ra\n");
-		}
-		else
-		{
-			pb(a, b);
-			ft_printf("pb\n");
-		}
-		i++;
-	}
-	while (b->size > 0)
-	{
-		pa(a, b);
-		ft_printf("pa\n");
-	}
+	return (max_bits);
 }
 
 void	radix_sort(t_stack *a, t_stack *b)
 {
 	int	max_bits;
 	int	bit;
+	int	size;
+	int	i;
 
 	max_bits = get_max_bits(a);
 	bit = 0;
-	while (bit < max_bits)
+	while (bit < max_bits && !is_sorted(a))
 	{
-		process_bit(a, b, bit);
+		size = a->size;
+		i = 0;
+		while (i < size)
+		{
+			if (((a->top->index >> bit) & 1) == 0)
+				(pb(a, b), ft_printf("pb\n"));
+			else
+				(ra(a), ft_printf("ra\n"));
+			i++;
+		}
+		while (b->size > 0)
+			(pa(a, b), ft_printf("pa\n"));
 		bit++;
 	}
 }
